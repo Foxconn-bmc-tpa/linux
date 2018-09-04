@@ -190,6 +190,8 @@ static ssize_t show_hdd_micron_temp(struct device *dev, struct device_attribute 
 	if (IS_ERR(data))
 		return PTR_ERR(data);
 
+	data->temperature *= 1000;
+	
 	update_hdd_record(data, 0, data->temperature);
 
 	return sprintf(buf, "%d\n", data->temperature);
@@ -282,6 +284,8 @@ static ssize_t show_hdd_pm963_temp(struct device *dev, struct device_attribute *
 	if (IS_ERR(data))
 		return PTR_ERR(data);
 
+	data->temperature *= 1000;
+	
 	update_hdd_record(data, device_index+1, data->temperature);
 
 	return sprintf(buf, "%d\n", data->temperature);

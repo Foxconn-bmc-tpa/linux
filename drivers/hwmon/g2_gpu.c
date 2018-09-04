@@ -316,7 +316,7 @@ static int g50_gpu_remove(struct i2c_client *client)
 }
 
 static const struct i2c_device_id g50_gpu_ids[] = {
-	{ "g50_gpu", 0, },
+	{ "g2_gpu", 0, },
 	{ /* LIST END */ }
 };
 MODULE_DEVICE_TABLE(i2c, g50_gpu_ids);
@@ -330,7 +330,7 @@ static int g50_gpu_detect(struct i2c_client *new_client,
 	if (!i2c_check_functionality(adapter, I2C_FUNC_SMBUS_BLOCK_DATA))
 		return -ENODEV;
 
-	strlcpy(info->type, "g50_gpu", I2C_NAME_SIZE);
+	strlcpy(info->type, "g2_gpu", I2C_NAME_SIZE);
 
 	return 0;
 }
@@ -341,7 +341,7 @@ static const unsigned short normal_i2c[] = { 0x4f, I2C_CLIENT_END };
 static struct i2c_driver g50_gpu_driver = {
 	.class		= I2C_CLASS_HWMON,
 	.driver = {
-		.name	= "g50_gpu",
+		.name	= "g2_gpu",
 	},
 	.probe		= g50_gpu_probe,
 	.remove		= g50_gpu_remove,
